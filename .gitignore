@@ -1,0 +1,13 @@
+# Сырые и обработанные данные etl
+etl/data/raw/
+etl/data/processed/
+
+# Файлы с ключами
+.env
+creds.db
+
+# Кэш Python
+etl/__pycache__/
+
+# EDA чекпойнты
+.ipynb_checkpoints/
