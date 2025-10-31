@@ -38,10 +38,14 @@ py data_loader.py
 ## **Exploratory Data Analysis (EDA)** 
 Анализ датасета химических дескрипторов
 
+*Ссылка на рендер ноутбуков:*
+https://nbviewer.org/github/BezLiz/DDE/blob/main/notebooks/EDA.ipynb
+
 Цели анализа:
 - изучить структуру данных
 - проверить их полноту и целостность 
 - оценить выбросы
+- выявить взаимосвязи
 
 ## **ETL**
 Структура
