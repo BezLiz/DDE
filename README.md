@@ -1,8 +1,39 @@
 # DDE
-*Ссылка на датасет:*
-https://drive.google.com/file/d/1lIOnHOtzCNSoXV8akytUimq2RfNTC7PU/view?usp=sharing
+[*Ссылка на датасет (Google Drive)*](https://drive.google.com/file/d/1lIOnHOtzCNSoXV8akytUimq2RfNTC7PU/view?usp=sharing)
 
-## **Чтение датасета**
+## Описание проекта
+Проект по анализу и обработке данных по химическим дескрипторам.
+
+### Основные задачи:
+- прочтение, анализ и сохранение исходного датасета
+- трансформация и сохранение преобразованого датасета
+- проведение разведочного анализа данных (EDA) с визуализацией
+- запись данных в базу данных PostgreSQL 
+
+## Структура проекта
+```
+DDE/
+├── etl/                      # ETL пакет
+│ ├── extract.py              # Извлечение, оценка и сохранение сырых данных в .cvs
+│ ├── transform.py            # Проверка и приведение типов данных, сохранение очищенных данных в .parquet
+│ ├── load.py                 # Выгрузка 100 строк данных из .parquet в базу данных PostgreSQL 
+│ └── main.py                 # Cбор скриптов вместе и предоставление CLI-интерфейса
+│
+├── experiments/ 
+│ ├── data_loader.py          # Скрипт чтения датасета с Google Drive
+│ └── write_to_db.py          # Скрипт записи данных в базу PostgreSQL 
+│
+├── notebooks/                
+│   └── EDA.ipynb             # Разведочный анализ данных 
+│
+├── .gitignore                # Игнорируемые файлы и папки
+├── README.md                 # Основная документация проекта
+├── poetry.lock               # Фиксированные версии зависимостей Poetry
+├── pyproject.toml            # Конфигурация зависимостей Poetry
+└── raw_data.png              # Пример вывода первых срок сырого датасета
+```
+
+## **Начало работы**
 
 Создание окружение conda
 ```bash
@@ -30,7 +61,7 @@ poetry install --no-root
 ```
 Запуск скрипта для чтения датасета 
 ```bash
-py data_loader.py
+python data_loader.py
 ```
 ## **Вывод первых 10 строк**
 ![Первые 10 строк:](raw_data.png)
@@ -38,8 +69,7 @@ py data_loader.py
 ## **Exploratory Data Analysis (EDA)** 
 Анализ датасета химических дескрипторов
 
-*Ссылка на рендер ноутбуков:*
-https://nbviewer.org/github/BezLiz/DDE/blob/main/notebooks/EDA.ipynb
+[*Ссылка на рендер ноутбуков*](https://nbviewer.org/github/BezLiz/DDE/blob/main/notebooks/EDA.ipynb)
 
 Цели анализа:
 - изучить структуру данных
@@ -53,8 +83,8 @@ https://nbviewer.org/github/BezLiz/DDE/blob/main/notebooks/EDA.ipynb
 etl/
 ├── extract.py  # Извлечение, оценка и сохранение сырых данных в .cvs
 ├── transform.py  # Проверка и приведение типов данных, сохранение очищенных данных в .parquet
-├── load.py  # Выгрузка 100 строк данных из .parquet в базу данных homeworks
-└── main.py  # Cбор файлов вместе и предоставление CLI-интерфейса
+├── load.py  # Выгрузка 100 строк данных из .parquet в базу данных PostgreSQL homeworks
+└── main.py  # Cбор скриптов вместе и предоставление CLI-интерфейса
 ```
 
 Запуск полного процесса etl
